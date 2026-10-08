@@ -254,9 +254,10 @@ var QUESTIONS = [
     opts: ["$Hi\nBye\n!", "$HiBye!", "$HiBye\n!", "$Hi Bye !"], a: 2,
     exp: "Write לא יורדת שורה, ולכן Hi ו-Bye נדבקות. WriteLine יורדת שורה אחרי Bye, ולכן הסימן ! מודפס בשורה חדשה." },
 
-  { t: "print", text: "איזו פקודה מדפיסה את המילה Hi כשהיא מוקפת בגרשיים?",
-    opts: ['$Console.WriteLine(""Hi"");', '$Console.WriteLine("\\"Hi\\"");', "$Console.WriteLine('\"Hi\"');", '$Console.WriteLine("\\Hi\\");'], a: 1,
-    exp: "כדי להדפיס גרשיים בתוך מחרוזת כותבים לוכסן הפוך לפני כל גרש: \\\"" },
+  { t: "print", text: "מה יודפס?",
+    code: 'Console.Write("Line1\\nLine2");\nConsole.WriteLine("!");',
+    opts: ["$Line1Line2!", "$Line1\nLine2!", "$Line1\nLine2\n!", "$Line1\\nLine2!"], a: 1,
+    exp: "הצירוף \\n בתוך המחרוזת מוריד שורה, ולכן Line2 מודפס בשורה חדשה. הפקודה Write לא יורדת שורה בסוף, ולכן הסימן ! נדבק ל-Line2." },
 
   { t: "input", text: "איזו שורה קולטת נכון מספר שלם מהמשתמשת?",
     opts: ["$int x = Console.ReadLine();", "$int x = Parse.int(Console.ReadLine());", "$int x = int.Parse(Console.ReadLine());", "$int x = Console.ReadLine(int);"], a: 2,
