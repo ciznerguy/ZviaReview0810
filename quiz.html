@@ -407,7 +407,7 @@ function grade() {
   var missing = ans.filter(function (a) { return a < 0; }).length;
   var msg = document.getElementById("msg");
   if (missing > 0 && !submittedOnce) {
-    msg.textContent = "נשארו " + missing + " שאלות בלי תשובה. אפשר לחזור ולענות, או ללחוץ שוב כדי לבדוק בכל זאת.";
+    msg.textContent = (missing === 1 ? "נשארה שאלה אחת בלי תשובה." : "נשארו " + missing + " שאלות בלי תשובה.") + " אפשר לחזור ולענות, או ללחוץ שוב כדי לבדוק בכל זאת.";
     submittedOnce = true;
     var first = ans.indexOf(-1);
     document.getElementById("q" + first).scrollIntoView({ behavior: "smooth", block: "center" });
@@ -428,7 +428,7 @@ function grade() {
     if (ans[i] >= 0 && !ok) document.getElementById("q" + i + "o" + ans[i]).classList.add("wrong");
     var verdict = ok ? '<span class="verdict ok">נכון.</span>'
                      : (ans[i] < 0 ? '<span class="verdict bad">לא נענתה.</span>' : '<span class="verdict bad">לא נכון.</span>');
-    document.getElementById("e" + i).innerHTML = verdict + esc(q.exp);
+    document.getElementById("e" + i).innerHTML = verdict + " " + esc(q.exp);
   });
 
   var total = QUESTIONS.length;
