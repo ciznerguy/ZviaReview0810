@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סיכום פרקים 1 ו-2</title>
+<style>
+  :root {
+    --ink: #1d2433;
+    --muted: #5b6475;
+    --line: #d9dde5;
+    --paper: #ffffff;
+    --bg: #f4f6f9;
+    --accent: #1f5f99;
+    --accent-soft: #e8f0f8;
+    --warn: #9a5a00;
+    --warn-soft: #fff5e6;
+    --code-bg: #f6f8fa;
+    --out-bg: #1e1e1e;
+    --out-ink: #e6e6e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", Arial, "David", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+  header.cover {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px 28px 20px;
+    margin-bottom: 24px;
+  }
+  header.cover h1 { margin: 0 0 6px; font-size: 28px; }
+  header.cover p { margin: 4px 0; color: var(--muted); }
+  h2.chapter {
+    margin: 40px 0 14px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 22px;
+  }
+  section.ex {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 22px 14px;
+    margin-bottom: 16px;
+    break-inside: avoid;
+  }
+  section.ex h3 { margin: 0 0 8px; font-size: 19px; }
+  section.ex h3 .num {
+    display: inline-block;
+    min-width: 30px;
+    padding: 0 8px;
+    margin-left: 8px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    text-align: center;
+  }
+  .label { font-weight: 700; color: var(--muted); font-size: 14px; margin: 12px 0 4px; }
+  code, pre {
+    font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  code {
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 5px;
+    font-size: 14px;
+  }
+  pre {
+    text-align: left;
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  pre.code { background: var(--code-bg); border: 1px solid var(--line); color: var(--ink); }
+  pre.out { background: var(--out-bg); color: var(--out-ink); }
+  pre.out b { color: #9cdcfe; font-weight: 400; }
+  .note {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--warn-soft);
+    border-right: 4px solid var(--warn);
+    border-radius: 6px;
+  }
+  .note strong { color: var(--warn); }
+  ul { margin: 6px 0; padding-right: 22px; }
+  li { margin: 3px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0 16px;
+    font-size: 15px;
+  }
+  th, td { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+  th { background: var(--accent-soft); color: var(--accent); }
+  tr:last-child td { border-bottom: none; }
+  .howto { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 22px; }
+  .howto ol { margin: 6px 0; padding-right: 22px; }
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .page { padding: 0; max-width: none; }
+    h2.chapter { break-before: page; }
+    h2.chapter.first { break-before: auto; }
+    section.ex, header.cover, .howto, table { border-color: #bbb; }
+    pre.out { background: #f2f2f2; color: #000; border: 1px solid #bbb; }
+    pre.out b { color: #000; font-weight: 700; }
+  }
+  @media (max-width: 600px) {
+    header.cover, section.ex { padding: 16px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="cover">
+  <h1>סיכום דוגמאות: פרק 1 ופרק 2</h1>
+  <p>יסודות מדעי המחשב, שפת #C, כיתה י"א</p>
+  <p>מסמך מלווה לקוד הדוגמאות בפרויקט <code>ZviaReview0810</code></p>
+</header>
+
+<div class="howto">
+  <strong>איך מריצים דוגמה?</strong>
+  <ol>
+    <li>פותחים את הקובץ <code>Program.cs</code>.</li>
+    <li>בפעולה <code>Main</code> מוצאים את השורה של הדוגמה, למשל <code>// example7();</code></li>
+    <li>מוחקים את שני הלוכסנים בתחילת השורה ומריצים (F5 או Ctrl+F5).</li>
+    <li>לפני שעוברים לדוגמה הבאה, מחזירים את הלוכסנים לשורה הקודמת.</li>
+  </ol>
+  <p style="margin:8px 0 0">לפני כל הרצה כדאי לנסות לנחש מה יודפס, ורק אחר כך להשוות לפלט.</p>
+</div>
+
+<!-- ===================== פרק 1 ===================== -->
+<h2 class="chapter first">פרק 1: הוראות הדפסה ומשתנים</h2>
+
+<table>
+  <tr><th style="width:70px">דוגמה</th><th>נושא</th></tr>
+  <tr><td>1</td><td>סוגי משתנים והגדרתם</td></tr>
+  <tr><td>2</td><td>שתי פקודות הדפסה</td></tr>
+  <tr><td>3</td><td>קליטת מחרוזת מהמשתמש</td></tr>
+  <tr><td>4</td><td>קליטת נתונים מטיפוסים שונים</td></tr>
+  <tr><td>5</td><td>אתחול והשמה</td></tr>
+  <tr><td>6</td><td>השמה בין טיפוסים שונים</td></tr>
+  <tr><td>7</td><td>שטח והיקף של מלבן</td></tr>
+  <tr><td>8</td><td>הדפסת תווים מיוחדים</td></tr>
+  <tr><td>9</td><td>ממוצע של שני ציונים</td></tr>
+</table>
+
+<section class="ex">
+  <h3><span class="num">1</span>סוגי משתנים והגדרתם</h3>
+  <p>משתנה הוא מקום בזיכרון שבו שומרים נתון. בהגדרה כותבים קודם את הטיפוס ואחריו את שם המשתנה, ואפשר לתת לו ערך כבר בהגדרה.</p>
+  <table>
+    <tr><th>טיפוס</th><th>מה הוא מכיל</th><th>גודל בזיכרון</th><th>דוגמאות לערכים</th></tr>
+    <tr><td><code>int</code></td><td>מספר שלם, חיובי או שלילי</td><td>4 בתים</td><td><code>32, 0, -7</code></td></tr>
+    <tr><td><code>double</code></td><td>מספר עשרוני (ממשי)</td><td>8 בתים</td><td><code>87.5, -2.25</code></td></tr>
+    <tr><td><code>char</code></td><td>תו אחד, בין גרשיים בודדים</td><td>2 בתים</td><td><code>'A', '7', '!'</code></td></tr>
+    <tr><td><code>bool</code></td><td>אמת או שקר בלבד</td><td>בית אחד</td><td><code>true, false</code></td></tr>
+    <tr><td><code>string</code></td><td>טקסט באורך כלשהו, בין גרשיים כפולים</td><td>לפי האורך</td><td><code>"Hello"</code></td></tr>
+  </table>
+  <div class="label">כללים לשמות משתנים</div>
+  <ul>
+    <li>מותר להשתמש באותיות, ספרות וקו תחתון בלבד.</li>
+    <li>אסור רווחים, ואסור להתחיל בספרה.</li>
+    <li>יש הבדל בין אותיות גדולות לקטנות: <code>sum</code> ו-<code>Sum</code> הם שני משתנים שונים.</li>
+    <li>נותנים שם משמעותי, וכל מילה חדשה בשם מתחילה באות גדולה: <code>numOfStudents</code></li>
+  </ul>
+  <div class="label">פלט</div>
+<pre class="out">int: 32
+double: 87.5
+char: A
+bool: True
+string: Grade 11
+sum = 15</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">2</span>שתי פקודות הדפסה</h3>
+  <ul>
+    <li><code>Console.Write</code> מדפיסה ונשארת באותה שורה.</li>
+    <li><code>Console.WriteLine</code> מדפיסה ויורדת שורה בסוף.</li>
+  </ul>
+  <div class="label">פלט</div>
+<pre class="out">Hello World!Hi!
+Hello World!
+Hi!</pre>
+  <div class="note"><strong>שימו לב:</strong> בשורה הראשונה שתי ההדפסות נדבקו זו לזו, כי <code>Write</code> לא יורדת שורה.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">3</span>קליטת מחרוזת מהמשתמש</h3>
+  <p>הפקודה <code>Console.ReadLine()</code> מחכה שהמשתמש יקליד טקסט ויקיש Enter, ומחזירה את מה שהוקלד. שומרים את הערך במשתנה מטיפוס <code>string</code>.</p>
+<pre class="code">name = Console.ReadLine();
+Console.WriteLine("Hello " + name + "!");</pre>
+  <p>הסימן <code>+</code> בין מחרוזות מחבר אותן לטקסט אחד. לפעולה הזו קוראים שרשור.</p>
+  <div class="label">דוגמת הרצה (הקלט מודגש)</div>
+<pre class="out">Enter your name: <b>Dana</b>
+Hello Dana!</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">4</span>קליטת נתונים מטיפוסים שונים</h3>
+  <p>כל קלט מגיע תמיד כמחרוזת. כדי לשמור אותו כמספר, תו או ערך בוליאני ממירים אותו בעזרת <code>Parse</code>:</p>
+<pre class="code">int.Parse(Console.ReadLine())
+double.Parse(Console.ReadLine())
+char.Parse(Console.ReadLine())
+bool.Parse(Console.ReadLine())</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter your birth year: <b>2009</b>
+What is the year now? <b>2026</b>
+Enter your grades average: <b>91.3</b>
+Enter your best grade (one letter): <b>A</b>
+Do you like programming? (true/false) <b>true</b>
+You are 17 years old
+Your average is 91.3 and your best grade is A
+Do you like programming? True</pre>
+  <div class="note"><strong>שימו לב:</strong> אם מקלידים ערך שלא מתאים לטיפוס, למשל <code>7y</code> במקום מספר, ההמרה נכשלת והתוכנית נעצרת עם שגיאה.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">5</span>אתחול והשמה</h3>
+  <p>בהשמה המחשב מחשב קודם את הביטוי שבצד ימין של הסימן <code>=</code>, ורק אחר כך שם את התוצאה במשתנה שבצד שמאל.</p>
+<pre class="code">int x, y, z = 9;
+x = 5;
+y = x * 3;
+x = x + 1;</pre>
+  <div class="label">פלט</div>
+<pre class="out">x = 5, y = 15, z = 9
+x after x = x + 1 is 6</pre>
+  <div class="note"><strong>שימו לב:</strong> השורה <code>x = x + 1</code> היא לא משוואה. היא אומרת: קחי את הערך של x, הוסיפי לו 1, ושימי את התוצאה בחזרה ב-x. שימוש במשתנה שעוד לא קיבל ערך גורם לשגיאת קומפילציה.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">6</span>השמה בין טיפוסים שונים</h3>
+  <table>
+    <tr><th>מה עושים</th><th>הקוד</th><th>מה קורה</th></tr>
+    <tr><td>מעשרוני לשלם</td><td><code>n1 = (int)d;</code></td><td>חובה להמיר במפורש. החלק העשרוני נחתך, בלי עיגול.</td></tr>
+    <tr><td>משלם לעשרוני</td><td><code>d = n1;</code></td><td>לא צריך המרה, כי לא מאבדים מידע.</td></tr>
+    <tr><td>ממחרוזת למספר</td><td><code>d = double.Parse(s);</code></td><td>משתמשים ב-<code>Parse</code>.</td></tr>
+    <tr><td>ממספר למחרוזת</td><td><code>s = n1 + "";</code></td><td>שרשור עם מחרוזת ריקה.</td></tr>
+  </table>
+  <div class="label">פלט</div>
+<pre class="out">n1 = 97
+d = 97
+d = 45.6
+s = 97</pre>
+  <div class="note"><strong>שימו לב:</strong> הערך היה <code>97.8</code>, וההמרה ל-<code>int</code> נתנה <code>97</code> ולא 98. ההמרה חותכת ולא מעגלת.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">7</span>שטח והיקף של מלבן</h3>
+  <p>זו תוכנית במבנה הקלאסי: קלט, חישוב, פלט. את תוצאות החישוב שומרים קודם במשתנים, ורק אחר כך מדפיסים.</p>
+<pre class="code">area = length * width;
+perimeter = 2 * (length + width);</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter the rectangle's length: <b>5</b>
+Enter the rectangle's width: <b>3</b>
+The area is 15
+The perimeter is 16</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">8</span>הדפסת תווים מיוחדים</h3>
+  <table>
+    <tr><th>צירוף</th><th>מה הוא עושה</th></tr>
+    <tr><td><code>\n</code></td><td>ירידת שורה</td></tr>
+    <tr><td><code>\t</code></td><td>רווח של טאב</td></tr>
+    <tr><td><code>\"</code></td><td>מדפיס גרשיים</td></tr>
+    <tr><td><code>\\</code></td><td>מדפיס לוכסן הפוך</td></tr>
+  </table>
+  <div class="label">פלט</div>
+<pre class="out">Hello World!
+New Line
+Hello	World!
+"Hello World!"
+\Hello World!</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">9</span>ממוצע של שני ציונים</h3>
+  <ul>
+    <li><strong>קלט:</strong> שם של תלמידה ושני ציונים.</li>
+    <li><strong>חישוב:</strong> הממוצע נשמר במשתנה <code>average</code> מטיפוס <code>double</code>.</li>
+    <li><strong>פלט:</strong> השם והממוצע.</li>
+  </ul>
+<pre class="code">average = (grade1 + grade2) / 2;</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter the student's name: <b>Noa</b>
+Enter the first grade: <b>85</b>
+Enter the second grade: <b>90</b>
+The average of Noa is 87</pre>
+  <div class="note"><strong>מלכודת:</strong> הממוצע האמיתי הוא 87.5, אבל הודפס 87. שני הציונים שלמים וגם 2 הוא מספר שלם, ולכן זו חלוקת שלמים והחלק העשרוני נחתך. זה קורה עוד לפני שהתוצאה נכנסת למשתנה העשרוני. כדי לקבל תוצאה מדויקת מחלקים במספר עשרוני:
+    <pre class="code" style="margin-top:6px">average = (grade1 + grade2) / 2.0;</pre>
+  </div>
+</section>
+
+<!-- ===================== פרק 2 ===================== -->
+<h2 class="chapter">פרק 2: אופרטורים וביטויים לוגיים</h2>
+
+<table>
+  <tr><th style="width:70px">דוגמה</th><th>נושא</th></tr>
+  <tr><td>10</td><td>פעולות חשבון</td></tr>
+  <tr><td>11</td><td>חישוב מנה ושארית</td></tr>
+  <tr><td>12</td><td>בדיקה אם מספר זוגי</td></tr>
+  <tr><td>13</td><td>פירוק מספר תלת ספרתי לספרות</td></tr>
+  <tr><td>14</td><td>מספר שמייצג שעה</td></tr>
+  <tr><td>15</td><td>סדר פעולות החשבון</td></tr>
+  <tr><td>16</td><td>שרשור מול חיבור</td></tr>
+  <tr><td>17</td><td>הגדלה והקטנה באחד</td></tr>
+  <tr><td>18</td><td>אופרטורים מקוצרים</td></tr>
+  <tr><td>19</td><td>המרות בין טיפוסים</td></tr>
+  <tr><td>20</td><td>אופרטורי השוואה ואופרטורים לוגיים</td></tr>
+</table>
+
+<section class="ex">
+  <h3><span class="num">10</span>פעולות חשבון</h3>
+  <table>
+    <tr><th>פעולה</th><th>סימן</th></tr>
+    <tr><td>חיבור, חיסור, כפל</td><td><code>+ - *</code></td></tr>
+    <tr><td>חילוק</td><td><code>/</code></td></tr>
+    <tr><td>שארית</td><td><code>%</code></td></tr>
+  </table>
+  <div class="label">פלט</div>
+<pre class="out">13 + 5 = 18
+13 - 5 = 8
+13 * 5 = 65
+13 / 5 = 2
+13.5 / 5 = 2.7
+13 % 5 = 3
+13.5 % 5 = 3.5</pre>
+  <div class="note"><strong>הכלל:</strong> אם שני המספרים שלמים, התוצאה שלמה (13 חלקי 5 נותן 2). אם לפחות אחד מהם עשרוני, התוצאה עשרונית. אסור לחלק באפס.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">11</span>חישוב מנה ושארית</h3>
+  <ul>
+    <li><strong>מנה:</strong> כמה פעמים המחלק נכנס במספר. מחשבים עם <code>/</code></li>
+    <li><strong>שארית:</strong> מה שנשאר אחרי החלוקה. מחשבים עם <code>%</code></li>
+    <li>השארית תמיד קטנה מהמחלק.</li>
+  </ul>
+  <table>
+    <tr><th>מספר ומחלק</th><th>מנה</th><th>שארית</th><th>בדיקה</th></tr>
+    <tr><td>17 ו-5</td><td>3</td><td>2</td><td><code>3 * 5 + 2 = 17</code></td></tr>
+    <tr><td>20 ו-4</td><td>5</td><td>0</td><td><code>5 * 4 + 0 = 20</code></td></tr>
+    <tr><td>7 ו-10</td><td>0</td><td>7</td><td><code>0 * 10 + 7 = 7</code></td></tr>
+    <tr><td>100 ו-7</td><td>14</td><td>2</td><td><code>14 * 7 + 2 = 100</code></td></tr>
+  </table>
+  <div class="label">דוגמת הרצה (החלק שבו המשתמשת מקלידה)</div>
+<pre class="out">Enter a number: <b>23</b>
+Enter a divisor: <b>4</b>
+23 / 4 = 5
+23 % 4 = 3
+Check: 5 * 4 + 3 = 23</pre>
+  <div class="note"><strong>שימו לב:</strong> כשהמספר קטן מהמחלק (7 ו-10), המנה היא 0 והשארית היא המספר עצמו.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">12</span>בדיקה אם מספר זוגי</h3>
+  <p>שארית החלוקה ב-2 היא תמיד 0 או 1. שארית 0 פירושה מספר זוגי, ושארית 1 פירושה מספר אי זוגי. את תוצאת הבדיקה שומרים במשתנה בוליאני:</p>
+<pre class="code">isEven = num % 2 == 0;</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter a number: <b>7</b>
+The remainder is 1
+Is the number even? False</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">13</span>פירוק מספר תלת ספרתי לספרות</h3>
+  <table>
+    <tr><th>ספרה</th><th>הקוד</th><th>למה זה עובד</th></tr>
+    <tr><td>אחדות</td><td><code>num % 10</code></td><td>השארית מחלוקה ב-10 היא הספרה הימנית</td></tr>
+    <tr><td>עשרות</td><td><code>num / 10 % 10</code></td><td>קודם מוחקים את האחדות, ואז לוקחים את הספרה הימנית</td></tr>
+    <tr><td>מאות</td><td><code>num / 100</code></td><td>חילוק ב-100 מוחק את שתי הספרות הימניות</td></tr>
+  </table>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter a 3 digit number: <b>472</b>
+Hundreds: 4
+Tens: 7
+Units: 2
+Sum of digits: 13</pre>
+</section>
+
+<section class="ex">
+  <h3><span class="num">14</span>מספר שמייצג שעה</h3>
+  <p>המשתמשת מקלידה שעה כמספר אחד, למשל 1245 עבור 12:45.</p>
+<pre class="code">hours = theTime / 100;
+minutes = theTime % 100;</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter the time: <b>1245</b>
+The time is 12:45</pre>
+  <div class="note"><strong>נסו בעצמכן:</strong> הקלידו 905. יודפס <code>9:5</code> ולא <code>9:05</code>, כי המשתנה <code>minutes</code> הוא מספר, ולמספר 5 אין אפס מוביל.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">15</span>סדר פעולות החשבון</h3>
+  <ol style="padding-right:22px; margin:6px 0">
+    <li>סוגריים</li>
+    <li>כפל, חילוק ושארית</li>
+    <li>חיבור וחיסור</li>
+  </ol>
+  <p>פעולות באותה רמה מחושבות משמאל לימין.</p>
+  <table>
+    <tr><th>ביטוי</th><th>תוצאה</th><th>הסבר</th></tr>
+    <tr><td><code>2 + 3 * 4</code></td><td>14</td><td>כפל לפני חיבור</td></tr>
+    <tr><td><code>(2 + 3) * 4</code></td><td>20</td><td>הסוגריים קודם</td></tr>
+    <tr><td><code>10 - 4 - 3</code></td><td>3</td><td>משמאל לימין</td></tr>
+    <tr><td><code>20 / 4 * 5</code></td><td>25</td><td>משמאל לימין: קודם חילוק, אחר כך כפל</td></tr>
+    <tr><td><code>17 % 5 * 2</code></td><td>4</td><td>השארית היא 2, ואז כפול 2</td></tr>
+    <tr><td><code>1 + (4 + 5) * (3 / 2) % 5</code></td><td>5</td><td>3 חלקי 2 הוא 1 (שלמים), 9 כפול 1 הוא 9, השארית מ-5 היא 4, ועוד 1</td></tr>
+  </table>
+</section>
+
+<section class="ex">
+  <h3><span class="num">16</span>שרשור מול חיבור</h3>
+<pre class="code">Console.WriteLine("The sum is " + sum);
+Console.WriteLine("The sum is " + (n1 + n2));
+Console.WriteLine("The sum is " + n1 + n2);</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter the first number: <b>3</b>
+Enter the second number: <b>5</b>
+The sum is 8
+The sum is 8
+The sum is 35</pre>
+  <div class="note"><strong>למה 35?</strong> הביטוי מחושב משמאל לימין. קודם המספר 3 מתחבר למחרוזת ונוצרת מחרוזת חדשה, ואז גם 5 מתחבר אליה כטקסט. כדי לקבל את הסכום שמים סוגריים, או מחשבים קודם לתוך משתנה.</div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">17</span>הגדלה והקטנה באחד</h3>
+  <p>שלוש השורות האלה מגדילות את x ב-1: <code>x = x + 1;</code> <code>x++;</code> <code>++x;</code></p>
+  <p>ההבדל מופיע כשמשתמשים באופרטור בתוך השמה:</p>
+  <table>
+    <tr><th>קוד (x מתחיל ב-4)</th><th>תוצאה</th><th>הסבר</th></tr>
+    <tr><td><code>y = x++;</code></td><td><code>x = 5, y = 4</code></td><td>קודם y מקבל את הערך הישן, אחר כך x גדל</td></tr>
+    <tr><td><code>y = ++x;</code></td><td><code>x = 5, y = 5</code></td><td>קודם x גדל, אחר כך y מקבל את הערך החדש</td></tr>
+    <tr><td><code>y = x--;</code></td><td><code>x = 3, y = 4</code></td><td>קודם y מקבל את הערך הישן, אחר כך x קטן</td></tr>
+    <tr><td><code>y = --x;</code></td><td><code>x = 3, y = 3</code></td><td>קודם x קטן, אחר כך y מקבל את הערך החדש</td></tr>
+  </table>
+</section>
+
+<section class="ex">
+  <h3><span class="num">18</span>אופרטורים מקוצרים</h3>
+  <table>
+    <tr><th>כתיבה מקוצרת</th><th>כתיבה מלאה</th><th>x אחרי הפעולה</th></tr>
+    <tr><td><code>x += 5;</code></td><td><code>x = x + 5;</code></td><td>15</td></tr>
+    <tr><td><code>x -= 3;</code></td><td><code>x = x - 3;</code></td><td>12</td></tr>
+    <tr><td><code>x *= 2;</code></td><td><code>x = x * 2;</code></td><td>24</td></tr>
+    <tr><td><code>x /= 4;</code></td><td><code>x = x / 4;</code></td><td>6</td></tr>
+    <tr><td><code>x %= 4;</code></td><td><code>x = x % 4;</code></td><td>2</td></tr>
+  </table>
+  <div class="note"><strong>שימו לב:</strong> הביטוי שמימין מחושב קודם, כאילו הוא בסוגריים. כש-x שווה 3 ו-y שווה 2, הפעולה <code>x *= y + 1;</code> נותנת 9, כי היא בעצם <code>x = x * (y + 1);</code></div>
+</section>
+
+<section class="ex">
+  <h3><span class="num">19</span>המרות בין טיפוסים</h3>
+  <ul>
+    <li>בביטוי עם <code>int</code> ו-<code>double</code>, המספר השלם מומר אוטומטית לעשרוני, רק לצורך החישוב.</li>
+    <li>החישוב נעשה לפי סדר הפעולות, ולכן חילוק בין שני שלמים נשאר חילוק שלמים.</li>
+    <li>להמרה מפורשת כמו <code>(double)</code> יש קדימות גבוהה, ולכן היא מתבצעת לפני החילוק.</li>
+  </ul>
+  <table>
+    <tr><th>קוד (n1 = 5, n2 = 8, d1 = 7)</th><th>תוצאה</th><th>הסבר</th></tr>
+    <tr><td><code>d0 = d1 + n1 / n2;</code></td><td>7</td><td>5 חלקי 8 בשלמים הוא 0</td></tr>
+    <tr><td><code>d0 = d1 + (double)n1 / n2;</code></td><td>7.625</td><td>n1 הומר לעשרוני לפני החילוק</td></tr>
+    <tr><td><code>d0 = n1 / n2;</code></td><td>0</td><td>החילוק שלם, למרות ש-d0 עשרוני</td></tr>
+    <tr><td><code>n = (int)(9 / 2.0 + 5);</code></td><td>9</td><td>9.5 נחתך ל-9</td></tr>
+  </table>
+</section>
+
+<section class="ex">
+  <h3><span class="num">20</span>אופרטורי השוואה ואופרטורים לוגיים</h3>
+  <table>
+    <tr><th>אופרטור</th><th>משמעות</th></tr>
+    <tr><td><code>&lt;  &lt;=  &gt;  &gt;=</code></td><td>קטן, קטן או שווה, גדול, גדול או שווה</td></tr>
+    <tr><td><code>==</code></td><td>שווה (שני סימני שוויון, כי סימן אחד הוא השמה)</td></tr>
+    <tr><td><code>!=</code></td><td>שונה</td></tr>
+    <tr><td><code>&amp;&amp;</code></td><td>וגם: אמת רק אם שני התנאים אמת</td></tr>
+    <tr><td><code>||</code></td><td>או: אמת אם לפחות תנאי אחד אמת</td></tr>
+    <tr><td><code>!</code></td><td>שלילה: הופך אמת לשקר ושקר לאמת</td></tr>
+  </table>
+<pre class="code">isPositive = num > 0;
+isTwoDigit = num >= 10 &amp;&amp; num <= 99;
+isOutOfRange = num < 0 || num > 100;
+isOdd = !(num % 2 == 0);</pre>
+  <div class="label">דוגמת הרצה</div>
+<pre class="out">Enter a number: <b>47</b>
+Positive: True
+Two digit: True
+Out of range 0-100: False
+Odd: True</pre>
+  <div class="note"><strong>שימו לב:</strong> אם התוצאה ברורה כבר אחרי התנאי הראשון, התנאי השני לא נבדק בכלל. ב-<code>&amp;&amp;</code> זה קורה כשהתנאי הראשון שקר, וב-<code>||</code> כשהתנאי הראשון אמת.</div>
+</section>
+
+<h2 class="chapter">דף חזרה מהיר</h2>
+<table>
+  <tr><th>נושא</th><th>מה חשוב לזכור</th></tr>
+  <tr><td>קלט</td><td>תמיד מגיע כמחרוזת, וממירים עם <code>Parse</code></td></tr>
+  <tr><td>השמה</td><td>קודם מחשבים את צד ימין, אחר כך שמים בצד שמאל</td></tr>
+  <tr><td>חילוק שלמים</td><td>שלם חלקי שלם נותן תוצאה שלמה, והחלק העשרוני נחתך</td></tr>
+  <tr><td>המרה לשלם</td><td><code>(int)</code> חותך ולא מעגל</td></tr>
+  <tr><td>ספרת האחדות</td><td><code>num % 10</code></td></tr>
+  <tr><td>מחיקת ספרת האחדות</td><td><code>num / 10</code></td></tr>
+  <tr><td>בדיקת זוגיות</td><td><code>num % 2 == 0</code></td></tr>
+  <tr><td>שרשור</td><td>מחרוזת ועוד מספר נותנת מחרוזת. לסכום צריך סוגריים</td></tr>
+  <tr><td><code>x++</code> מול <code>++x</code></td><td>אחרי המשתנה: קודם משתמשים ואז מגדילים. לפני המשתנה: קודם מגדילים</td></tr>
+  <tr><td>שוויון</td><td><code>==</code> להשוואה, <code>=</code> להשמה</td></tr>
+</table>
+
+</div>
+</body>
+</html>
